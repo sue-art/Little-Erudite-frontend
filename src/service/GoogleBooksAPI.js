@@ -1,6 +1,6 @@
 //const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API;
 
-const apiKey = "AIzaSyCrBkA-dO57FEQivco2PI0FtY38wKYm0LI";
+const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
 
 const fetchBooks = async (searchTerm) => {
   try {
