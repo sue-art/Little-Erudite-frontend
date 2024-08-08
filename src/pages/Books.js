@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import GenresList from "../components/Book/genres/GenresList";
 import SearchBar from "../components/Book/Search/SearchBar";
@@ -15,6 +15,10 @@ const Books = () => {
   const { search } = useLocation();
   const search_key = search.split("=")[0];
   const search_value = search.split("=")[1];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <Fragment>

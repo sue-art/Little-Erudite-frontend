@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext"; // Adjust the import path as necessary
 
 export default function SignIn() {
@@ -7,12 +7,13 @@ export default function SignIn() {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await login(userName, userPassword);
-      // navigate("/"); // Navigate to the Home page
+      localStorage.setItem("user", userName);
+      navigate("/profile"); // Navigate to the Home page
     } catch (err) {
       setError("Invalid username or password. Please try again.");
     }

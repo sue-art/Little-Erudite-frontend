@@ -7,6 +7,7 @@ import BookList from "../components/Book/BookList";
 import BooksListContextProvider from "../components/Book/BookListContext";
 import AuthorList from "../components/Book/authors/AuthorList";
 import ReadingRoadmapList from "../components/Roadmap/ReadingRoadmapList";
+import Features from "../layout/Features";
 
 function Home() {
   return (
@@ -14,6 +15,10 @@ function Home() {
       <div className="mx-auto max-w-2xl lg:max-w-7xl">
         <h2 className="text-2xl font-bold">Reading Roadmap</h2>
         <ReadingRoadmapList />
+        <h2 className="text-2xl font-bold">Our Service</h2>
+
+        <Features />
+
         <h2 className="text-2xl font-bold">
           Children's Books That Will Inspire the World
         </h2>

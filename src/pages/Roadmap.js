@@ -72,7 +72,9 @@ const Roadmap = () => {
           <center>
             <h1 className="text-2xl font-bold my-5">{selectedRoadmap.title}</h1>
             <Avatar name={selectedRoadmap.avatarname} size={"medium"} />
-            <p className="mt-5 w-[500px]">{selectedRoadmap.description}</p>
+            <p className="mt-5 xs:w-full sm:w-1/2">
+              {selectedRoadmap.description}
+            </p>
           </center>
           <TopicList roadmapTitle={selectedRoadmap.title} />
         </div>
