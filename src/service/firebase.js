@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, getIdToken } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,9 +28,18 @@ const auth = getAuth(app);
 const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
-console.log(app);
+//get permisstion from firebase
+const grantPermission = () => {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notification permission granted.");
+    } else {
+      console.log("Unable to get permission to notify.");
+    }
+  });
+};
 
-const SendEmail = async ({ email, name, message }) => {
+const sendEmail = async ({ email, name, message }) => {
   try {
     const docRef = addDoc(collection(db, "mail"), {
       to: "suepark0305@gmail.com",
@@ -39,10 +48,13 @@ const SendEmail = async ({ email, name, message }) => {
         html: `This email from Contact Us form from Little Erudite - From: ${email} (${name}) <br/> ${message}`,
       },
     });
+
     console.log("Document written with ID: ", docRef.id);
+    return true;
   } catch (e) {
     console.error("Error adding document: ", e);
+    return false;
   }
 };
 
-export { auth, analytics, SendEmail };
+export { auth, analytics, sendEmail, grantPermission };

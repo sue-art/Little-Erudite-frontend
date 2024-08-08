@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
-import { SendEmail } from "../service/firebase";
+import { sendEmail, grantPermission } from "../service/firebase";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -30,16 +30,23 @@ const Contact = () => {
     if ((email, name, message)) {
       setLoading(true);
       setTimeout(() => {
-        SendEmail({ email, name, message });
+        const request = sendEmail({ email, name, message });
+        if (request) {
+          setLoading(false);
+          setSuccessMessage(
+            "Message sent successfully! We will get back to you soon."
+          );
+        } else {
+          setError("Error sending message. Please try again later.");
+        }
       }, 2000);
-      setSuccessMessage(
-        "Message sent successfully! We will get back to you soon."
-      );
+
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    grantPermission();
     if (successMessage) {
       setTimeout(() => {
         setSuccessMessage("");
@@ -55,7 +62,7 @@ const Contact = () => {
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Contact Us</h1>
         {loading && <div className="text-center">Loading...</div>}
-        {successMessage && successMessage}
+        {successMessage ? successMessage : error}
         {successMessage ? (
           <Loader />
         ) : (
