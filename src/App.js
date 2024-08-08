@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
@@ -28,39 +28,42 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/books/:id" element={<Books />} />
-        <Route path="/series/" element={<Series />} />
-        <Route path="/series/:id" element={<Series />} />
-        <Route path="/authors/:id" element={<Author />} />
-        <Route path="/roadmap/" element={<Roadmap />} />
-        <Route path="/roadmap/:id" element={<Roadmap />} />
-        <Route path="/quizzes" element={<Quiz />} />
-        <Route path="/quizzes/:id" element={<Quiz />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<Blog />} />
-        <Route path="/about/" element={<About />} />
-        <Route path="/privacy-policy" element={<PP />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/sign-in" element={<SingIn />} />
-        <Route path="/profile/" element={<Profile />} />
-        <Route path="/topic-talks" element={<TopicTalks />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Route>
-      <Route element={<AdminLayout />}>
-        <Route path="/admin/books" element={<BooksDashboard />} />
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/books/:id" element={<Books />} />
+          <Route path="/series/" element={<Series />} />
+          <Route path="/series/:id" element={<Series />} />
+          <Route path="/authors/:id" element={<Author />} />
+          <Route path="/roadmap/" element={<Roadmap />} />
+          <Route path="/roadmap/:id" element={<Roadmap />} />
+          <Route path="/quizzes" element={<Quiz />} />
+          <Route path="/quizzes/:id" element={<Quiz />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/about/" element={<About />} />
+          <Route path="/privacy-policy" element={<PP />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/sign-in" element={<SingIn />} />
+          <Route path="/profile/" element={<Profile />} />
+          <Route path="/topic-talks" element={<TopicTalks />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
 
-        <Route path="/admin/series" element={<SerieDashboard />} />
-        <Route path="/admin/roadmap" element={<RoadmapDashboard />} />
-        <Route path="/admin/quizzes" element={<QuizzesDashboard />} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin/books" element={<BooksDashboard />} />
 
-        <Route path="/admin/dashboard" element={<DashboardAdmin />} />
-      </Route>
-    </Routes>
+          <Route path="/admin/series" element={<SerieDashboard />} />
+          <Route path="/admin/roadmap" element={<RoadmapDashboard />} />
+          <Route path="/admin/quizzes" element={<QuizzesDashboard />} />
+
+          <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
