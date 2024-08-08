@@ -62,7 +62,7 @@ export default function SignIn() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function SignIn() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -107,20 +107,19 @@ export default function SignIn() {
                 </button>
               </div>
             </form>
+            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <p className="mt-10 text-center text-sm text-gray-500">
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                >
+                  Create an account here{" "}
+                </Link>
+              </p>
+            </div>
           </div>
         )}
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Create an account here{" "}
-            </Link>
-          </p>
-        </div>
       </div>
     </>
   );

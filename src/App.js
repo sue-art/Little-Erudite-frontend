@@ -23,6 +23,8 @@ import PP from "./pages/PP";
 import Author from "./pages/Author";
 import SingIn from "./pages/Auth/SingIn";
 import Register from "./pages/Auth/Register";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+
 import Profile from "./pages/Profile";
 import Contact from "./pages/Contact";
 
@@ -46,6 +48,7 @@ function App() {
         <Route path="/privacy-policy" element={<PP />} />
         <Route path="/register" element={<Register />} />
         <Route path="/sign-in" element={<SingIn />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/profile/" element={<Profile />} />
         <Route path="/topic-talks" element={<TopicTalks />} />
         <Route path="/contact" element={<Contact />} />
