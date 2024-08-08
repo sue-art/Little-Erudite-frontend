@@ -51,21 +51,24 @@ const BookDetail = ({ book_id }) => {
   };
 
   const addToBookList = async (e) => {
-    if (!username) alert("Please login to add book to your list");
-    openModalHandler("signin");
-    return dispatch({
-      type: "setMessage",
-      payload: "Please login to add book to your list",
-    });
-    const newBook = {
-      title: book.title,
-      image: book.image,
-      status: "Want to read",
-    };
+    if (!username) {
+      alert("Please login to add book to your list");
+      openModalHandler("signin");
+      return dispatch({
+        type: "setMessage",
+        payload: "Please login to add book to your list",
+      });
+    } else {
+      const newBook = {
+        title: book.title,
+        image: book.image,
+        status: "Want to read",
+      };
 
-    const addBook = await addReadingListtoUser(username, newBook);
-    if (addBook) {
-      dispatch({ type: "setMessage", payload: "Book added to your list" });
+      const addBook = await addReadingListtoUser(username, newBook);
+      if (addBook) {
+        dispatch({ type: "setMessage", payload: "Book added to your list" });
+      }
     }
   };
 
