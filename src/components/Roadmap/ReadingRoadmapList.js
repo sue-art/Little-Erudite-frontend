@@ -5,34 +5,33 @@ import Avatar from "../Avata/Avata";
 
 const initialRoadmap = [
   {
-    id: 1 - 123,
+    id: 2 - 223,
     title: "The Little Bookworms Journey",
     slug: "the-little-bookworms-journey",
     avatarname: "Sam",
     color: "green",
     description:
-      "It is designed to improve literacy in Year 1&2 children through enjoyable reading, encouraging parents, carers, and school staff to read aloud with them, featuring 30 new titles and reading tips.",
+      "It is designed to improve literacy in Year 1&2 children through enjoyable It is designed to enhance literacy in Year 1 and 2 children, promoting enjoyable reading and encouraging parents and carers to engage in effective conversations with them.",
   },
   {
-    id: 2 - 124,
+    id: 2 - 224,
     title: "The Literary Adventurer's Journey",
     slug: "the-literary-adventurers-journey",
     avatarname: "Dave",
     color: "pink",
     description:
-      "The Literary Adventurer's Journey is the Year 5&6 Reading Road Map for ages 7-9 that will helps children aged 7-9 navigate their reading journey, discover new books, and develop their literary skills.",
+      "It is designed to improve literacy in Year 3 and 4 children, helping them on their reading journey, discovering new books, and developing their literary skills.",
   },
   {
-    id: 3 - 125,
+    id: 3 - 225,
     title: "The Chapter Chaser's Journey",
     slug: "the-chapter-chasers-journey",
     color: "yellow",
     avatarname: "Sarah",
     description:
-      "The Year 5&6 Reading Road Map, with 60 librarian-selected titles and a new non-fiction section, aims to boost literacy by encouraging children to explore diverse authors and genres.",
+      "It is the Year 5 and 6 Reading Road Map. Librarian-selected titles and a new non-fiction section aim to boost literacy by encouraging children to explore diverse authors and genres.",
   },
 ];
-
 const ReadingRoadmapList = () => {
   return (
     <div className="mx-auto max-w-2xl lg:max-w-7xl pb-10">
