@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useReducer, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../service/firebase"; // Adjust the import path as necessary
-import { addUser } from "../../components/admin/users/UsersFetchAPI"; // Adjust the import path as necessary
 // Create a new context
 const AuthContext = createContext();
 
@@ -9,6 +8,8 @@ const AuthContext = createContext();
 const initialState = {
   isAuthenticated: false,
   username: null,
+  loading: null,
+  user: null,
 };
 
 // Reducer function
@@ -18,13 +19,25 @@ const authReducer = (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        username: action.username,
+        user: action.payload,
+        username: action.payload.email,
       };
     case "LOGOUT":
       return {
         ...state,
         isAuthenticated: false,
         username: null,
+        user: null,
+      };
+    case "SET_USER":
+      return {
+        ...state,
+        username: action.payload,
+      };
+    case "LOADING":
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return state;
@@ -35,25 +48,7 @@ const authReducer = (state, action) => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const createUser = async ({ userId, displayName, email }) => {
-    const user = { userId: userId, email: email, displayName: displayName };
-
-    try {
-      const response = await addUser(user);
-      console.log(response);
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    const username = localStorage.getItem("username");
-    if (username) {
-      dispatch({ type: "LOGIN", username });
-    }
-  }, []);
-
-  const login = async (email, password, userName) => {
+  const login = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -62,14 +57,9 @@ export const AuthProvider = ({ children }) => {
       );
       const user = userCredential.user;
 
-      createUser({
-        userId: user.uid,
-        displayName: userName,
-        email: user.email,
-      });
-
-      localStorage.setItem("username", user.email);
-      dispatch({ type: "LOGIN", username: user.email });
+      dispatch({ type: "LOGIN", payload: user });
+      localStorage.setItem("user", user);
+      dispatch({ type: "LOADING", payload: false });
     } catch (error) {
       throw new Error(error.message);
     }
@@ -90,6 +80,8 @@ export const AuthProvider = ({ children }) => {
       value={{
         isAuthenticated: state.isAuthenticated,
         username: state.username,
+        state,
+        dispatch,
         login,
         logout,
       }}

@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../Cards/Card";
+import Card from "../cards/Card";
 import IconArrowRight from "../Icons/IconArrowRight";
-import Avatar from "../Avata/Avata";
+import Avatar from "../avata/Avata";
 
 const initialRoadmap = [
   {

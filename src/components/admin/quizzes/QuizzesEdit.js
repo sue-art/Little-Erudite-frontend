@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useCallback } from "react";
-import { useQuiz } from "../../Quiz/QuizContextProvider";
+import { useQuiz } from "../../quiz/QuizContextProvider";
 import { updateQuiz } from "./QuizzesFetchAPI";
 
 const QuizzesEdit = () => {

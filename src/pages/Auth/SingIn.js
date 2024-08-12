@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext"; // Adjust the import path as necessary
 
 export default function SignIn() {
-  const { isAuthenticated, username, login, logout } = useAuth();
+  const { isAuthenticated, login, logout } = useAuth();
+  const username = localStorage.getItem("user").email;
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
@@ -12,7 +13,7 @@ export default function SignIn() {
     e.preventDefault();
     try {
       await login(userName, userPassword);
-      localStorage.setItem("user", userName);
+
       navigate("/profile"); // Navigate to the Home page
     } catch (err) {
       setError("Invalid username or password. Please try again.");

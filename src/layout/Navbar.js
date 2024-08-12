@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../pages/Auth/AuthContext";
-import Avatar from "../components/Avata/Avata";
+import Avatar from "../components/avata/Avata";
 
 const navigation = [
   { name: "BOOKS", href: "/books" },

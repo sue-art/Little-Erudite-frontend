@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Pagination from "../../../layout/Pagination";
-import { useQuiz } from "../../Quiz/QuizContextProvider";
+import { useQuiz } from "../../quiz/QuizContextProvider";
 import { deleteQuiz } from "./QuizzesFetchAPI";
 
 const Quizzeslist = () => {

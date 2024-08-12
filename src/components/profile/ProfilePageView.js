@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useAuth } from "../../pages/Auth/AuthContext";
-import Card from "../Cards/Card";
-import Avatar from "../Avata/Avata";
+import Card from "../cards/Card";
+import Avatar from "../avata/Avata";
 import {
   getUserById,
   updateUserBookStatus,

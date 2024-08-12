@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
-import SeriesList from "../components/Book/series/SeriesList";
-import GenresList from "../components/Book/genres/GenresList";
-import QuizList from "../components/Quiz/QuizList";
-import { QuizContextProvider } from "../components/Quiz/QuizContextProvider";
-import BookList from "../components/Book/BookList";
-import BooksListContextProvider from "../components/Book/BookListContext";
-import AuthorList from "../components/Book/authors/AuthorList";
-import ReadingRoadmapList from "../components/Roadmap/ReadingRoadmapList";
+import SeriesList from "../components/book/series/SeriesList";
+import GenresList from "../components/book/genres/GenresList";
+import QuizList from "../components/quiz/QuizList";
+import { QuizContextProvider } from "../components/quiz/QuizContextProvider";
+import BookList from "../components/book/BookList";
+import BooksListContextProvider from "../components/book/BookListContext";
+import AuthorList from "../components/book/authors/AuthorList";
+import ReadingRoadmapList from "../components/roadmap/ReadingRoadmapList";
 import Features from "../layout/Features";
 
 function Home() {

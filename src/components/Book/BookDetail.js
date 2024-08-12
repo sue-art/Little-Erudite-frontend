@@ -6,7 +6,7 @@ import Loader from "../Loader";
 import BookTalkCard from "./BookTalkCard";
 import AuthorItem from "./authors/AuthorItem";
 import Modal from "./Modal";
-import QuizDetail from "../../components/Quiz/QuizDetail";
+import QuizDetail from "../quiz/QuizDetail";
 import BookItem from "./BookItem";
 import AudiobookPlayer from "../Features/AudiobookPlayer";
 import BookVocabulary from "./BookVocabulary";

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import "../Quiz/quiz.css";
+import "../quiz/quiz.css";
 
 const TopicTalksItem = ({ topic }) => {
   const [isFlipped, setIsFlipped] = useState(false);

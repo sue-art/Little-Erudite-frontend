@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
-import GenresList from "../components/Book/genres/GenresList";
-import SearchBar from "../components/Book/Search/SearchBar";
-import BooksListContextProvider from "../components/Book/BookListContext";
+import GenresList from "../components/book/genres/GenresList";
+import SearchBar from "../components/book/Search/SearchBar";
+import BooksListContextProvider from "../components/book/BookListContext";
 
-import Avatar from "../components/Avata/Avata";
-import TopicList from "../components/Roadmap/TopicList";
+import Avatar from "../components/avata/Avata";
+import TopicList from "../components/roadmap/TopicList";
 import Loader from "../components/Loader";
 
 const initialRoadmap = [

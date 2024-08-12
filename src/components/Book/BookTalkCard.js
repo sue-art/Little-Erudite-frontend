@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import Avatar from "../Avata/Avata";
+import Avatar from "../avata/Avata";
 import IconSpeaker from "../Icons/IconSpeaker";
 import IconChatBubble from "../Icons/IconChatBubble";
 import BookTalksChat from "./BookTalksChat";

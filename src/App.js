@@ -55,12 +55,11 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Route>
       <Route element={<AdminLayout />}>
+        <Route path="/admin/sign-in" element={<SingIn />} />
         <Route path="/admin/books" element={<BooksDashboard />} />
-
         <Route path="/admin/series" element={<SerieDashboard />} />
         <Route path="/admin/roadmap" element={<RoadmapDashboard />} />
         <Route path="/admin/quizzes" element={<QuizzesDashboard />} />
-
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
       </Route>
     </Routes>

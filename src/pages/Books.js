@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import GenresList from "../components/Book/genres/GenresList";
-import SearchBar from "../components/Book/Search/SearchBar";
-import BookList from "../components/Book/BookList";
-import SeriesList from "../components/Book/series/SeriesList";
-import BooksListContextProvider from "../components/Book/BookListContext";
-import BookDetail from "../components/Book/BookDetail";
-import SeriesDetail from "../components/Book/series/SeriesDetail";
-import GenresGroup from "../components/Book/genres/GenresGroup";
-import { QuizContextProvider } from "../components/Quiz/QuizContextProvider";
+import GenresList from "../components/book/genres/GenresList";
+import SearchBar from "../components/book/Search/SearchBar";
+import BookList from "../components/book/BookList";
+import SeriesList from "../components/book/series/SeriesList";
+import BooksListContextProvider from "../components/book/BookListContext";
+import BookDetail from "../components/book/BookDetail";
+import SeriesDetail from "../components/book/series/SeriesDetail";
+import GenresGroup from "../components/book/genres/GenresGroup";
+import { QuizContextProvider } from "../components/quiz/QuizContextProvider";
 
 const Books = () => {
   const { id } = useParams();

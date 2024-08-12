@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import GenresList from "../components/Book/genres/GenresList";
-import SearchBar from "../components/Book/Search/SearchBar";
-import BooksListContextProvider from "../components/Book/BookListContext";
+import GenresList from "../components/book/genres/GenresList";
+import SearchBar from "../components/book/Search/SearchBar";
+import BooksListContextProvider from "../components/book/BookListContext";
 import ProfilePageView from "../components/profile/ProfilePageView";
 import SignIn from "./Auth/SingIn";
 import { useAuth } from "./Auth/AuthContext";
 
 const Profile = () => {
-  const { username } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,7 +18,7 @@ const Profile = () => {
       <div className="mt-10">
         <GenresList />
         <SearchBar />
-        {!username ? <SignIn /> : <ProfilePageView />}
+        {!isAuthenticated ? <SignIn /> : <ProfilePageView />}
       </div>
     </BooksListContextProvider>
   );

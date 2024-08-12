@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { QuizContextProvider } from "../../Quiz/QuizContextProvider";
+import { QuizContextProvider } from "../../quiz/QuizContextProvider";
 import QuizzesEdit from "./QuizzesEdit";
 import QuizzesList from "./QuizzesList";
 
