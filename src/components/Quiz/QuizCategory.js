@@ -26,8 +26,6 @@ const QuizCategory = () => {
     dispatch({ type: "SET_SEARCH_QUERY", payload: e.target.value });
   };
 
-  useEffect(() => {}, []);
-
   return (
     <Fragment>
       <div className="mt-20 flex items-center justify-center flex-wrap">

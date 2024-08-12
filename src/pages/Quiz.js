@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
-
 import QuizCategory from "../components/quiz/QuizCategory";
 import QuizList from "../components/quiz/QuizList";
 import { QuizContextProvider } from "../components/quiz/QuizContextProvider";
