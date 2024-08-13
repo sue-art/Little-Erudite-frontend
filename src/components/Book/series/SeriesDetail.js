@@ -50,7 +50,6 @@ const SeriesDetail = () => {
 
   const fetchSeriesData = async (name) => {
     const seriesFetchData = await getSeriesByName(name);
-    console.log("seriesFetchData", seriesFetchData);
     if (seriesFetchData) {
       setSeriesItem(seriesFetchData);
       fetchAuthorData(seriesFetchData.name);
@@ -69,7 +68,6 @@ const SeriesDetail = () => {
   };
 
   const fetchAuthorData = async (authorName) => {
-    console.log("Am I here");
     const authorData = await getAuthorByName(authorName);
     if (authorData.error) console.log("Error fetching author data");
     setAuthor(authorData);
@@ -84,8 +82,6 @@ const SeriesDetail = () => {
     if (books.length === 0) {
       fetchAllBooks();
     }
-    console.log("author", name);
-    window.scrollTo(0, 0);
   }, [name, books.length, dispatch]);
 
   if (loading) {

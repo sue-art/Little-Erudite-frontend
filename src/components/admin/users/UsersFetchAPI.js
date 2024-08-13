@@ -202,8 +202,6 @@ const API_URL_FIREBASE = `${serverurl}/api/firebase`;
 
 //send message to server sider
 export const sendMessage = async (email, name, message) => {
-  console.log(email, name, message);
-
   const messageData = {
     email: email,
     name: name,
