@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import { grantPermission } from "../service/firebase";
 import { sendMessage } from "../components/admin/users/UsersFetchAPI";
-
+import Loader from "../components/Loader";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +58,11 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Contact Us</h1>
-        {loading && <div className="text-center">Loading...</div>}
+        {loading && (
+          <div className="text-center">
+            <Loader />
+          </div>
+        )}
         {successMessage && successMessage}
         {error && (
           <div
