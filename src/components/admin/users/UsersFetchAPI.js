@@ -197,3 +197,33 @@ export const addViewedBooktoUser = async (email, newBook) => {
     console.error("Error adding book list:", error);
   }
 };
+
+const API_URL_FIREBASE = `${serverurl}/api/firebase`;
+
+//send message to server sider
+export const sendMessage = async (email, name, message) => {
+  console.log(email, name, message);
+
+  const messageData = {
+    email: email,
+    name: name,
+    message: message,
+  };
+
+  try {
+    const response = await fetch(`${API_URL_FIREBASE}/message`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messageData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+    return response.ok;
+  } catch (error) {
+    console.error("Error :", error);
+  }
+};

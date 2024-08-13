@@ -1,32 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../service/firebase"; // Adjust the import path as necessary
 import { useAuth } from "./AuthContext";
 
-export default function Register() {
-  const { login } = useAuth();
+const Register = () => {
+  const { isAuthenticated, createAccount, signInWithGoogle } = useAuth();
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handleGoogleSignUp = async () => {
+    try {
+      signInWithGoogle();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        userEmail,
-        userPassword
-      );
-      const user = userCredential.user;
-      await login(user.email, userPassword, userName); // Assuming login function accepts email and password
-      navigate("/"); // Navigate to the Home page
+      createAccount(userEmail, userPassword);
     } catch (err) {
       setError(err.message);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/profile");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <>
@@ -35,9 +40,27 @@ export default function Register() {
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create a new account
           </h2>
+          <p className="text-center">
+            Sign up using your Google account or email
+          </p>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <button
+            onClick={handleGoogleSignUp}
+            className="mt-3 flex w-full justify-center rounded-md bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-gray hadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Sign up with Google
+          </button>
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-gray-300"></span>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">Or</span>
+            </div>
+          </div>
+
           <form className="space-y-6" onSubmit={handleRegister}>
             {error && (
               <div
@@ -133,4 +156,6 @@ export default function Register() {
       </div>
     </>
   );
-}
+};
+
+export default Register;

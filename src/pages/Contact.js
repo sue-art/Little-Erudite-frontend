@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
-import { sendEmail, grantPermission } from "../service/firebase";
+import { grantPermission } from "../service/firebase";
+import { sendMessage } from "../components/admin/users/UsersFetchAPI";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -24,25 +25,21 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    // Add the public key generated from the console here.
     if ((email, name, message)) {
       setLoading(true);
-      setTimeout(() => {
-        const request = sendEmail({ email, name, message });
-        if (request) {
-          setLoading(false);
-          setSuccessMessage(
-            "Message sent successfully! We will get back to you soon."
-          );
-        } else {
-          setError("Error sending message. Please try again later.");
-        }
-      }, 2000);
+      const request = await sendMessage(email, name, message);
 
-      setLoading(false);
+      if (request) {
+        setLoading(false);
+        setSuccessMessage(
+          "Message sent successfully! We will get back to you soon."
+        );
+      } else {
+        setError("Error sending message. Please try again later.");
+      }
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -62,7 +59,15 @@ const Contact = () => {
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Contact Us</h1>
         {loading && <div className="text-center">Loading...</div>}
-        {successMessage ? successMessage : error}
+        {successMessage && successMessage}
+        {error && (
+          <div
+            className="bg-red border border-red text-white px-4 py-3 rounded relative"
+            role="alert"
+          >
+            <span className="block sm:inline">{error}</span>
+          </div>
+        )}
         {successMessage ? (
           <Loader />
         ) : (

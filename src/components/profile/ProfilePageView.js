@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useAuth } from "../../pages/Auth/AuthContext";
 import Card from "../cards/Card";
 import Avatar from "../avata/Avata";
 import {
@@ -7,19 +6,24 @@ import {
   updateUserBookStatus,
 } from "../admin/users/UsersFetchAPI";
 import ProfileBookList from "./ProfileBookList";
+import Loader from "../Loader";
 
 const ProfilePageView = () => {
-  const { username } = useAuth();
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
+  const userEmail = user.userEmail;
+
   const [BookList, setBookList] = useState([]);
   const [ViewedBooks, setViewedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchUserBookList = async (username) => {
+  const fetchUserBookList = async (userEmail) => {
     try {
-      const getData = await getUserById(username);
+      const getData = await getUserById(userEmail);
+
       if (!getData) return;
 
-      const generateUniqueId = (index) => `${username}-${index}`;
+      const generateUniqueId = (index) => `${userEmail}-${index}`;
 
       if (!getData.booklist) {
         setBookList([]);
@@ -60,7 +64,7 @@ const ProfilePageView = () => {
     }
 
     setBookList(updatedBookList);
-    updateUserBookStatus(username, updatedBookList);
+    updateUserBookStatus(userEmail, updatedBookList);
   };
 
   const handleReadingListAdd = (title, image, status) => {
@@ -73,14 +77,14 @@ const ProfilePageView = () => {
       },
     ];
     setBookList(updatedBookList);
-    updateUserBookStatus(username, updatedBookList);
+    updateUserBookStatus(userEmail, updatedBookList);
   };
 
   useEffect(() => {
-    fetchUserBookList(username);
-  }, [username]);
+    fetchUserBookList(userEmail);
+  }, [userEmail]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
 
   return (
     <Fragment>
@@ -91,7 +95,7 @@ const ProfilePageView = () => {
               <Avatar name={"Sam"} size={"medium"} />
             </div>
             <h5 className="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Welcome, {username}{" "}
+              Welcome, {userEmail}{" "}
             </h5>
             <p className="font-normal text-gray-700 dark:text-gray-400">
               Reading Level: Intermediate

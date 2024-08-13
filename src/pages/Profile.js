@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import GenresList from "../components/book/genres/GenresList";
 import SearchBar from "../components/book/Search/SearchBar";
 import BooksListContextProvider from "../components/book/BookListContext";
@@ -9,16 +9,18 @@ import { useAuth } from "./Auth/AuthContext";
 const Profile = () => {
   const { isAuthenticated } = useAuth();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   return (
     <BooksListContextProvider>
       <div className="mt-10">
-        <GenresList />
-        <SearchBar />
-        {!isAuthenticated ? <SignIn /> : <ProfilePageView />}
+        {!isAuthenticated ? (
+          <SignIn />
+        ) : (
+          <>
+            <GenresList />
+            <SearchBar />
+            <ProfilePageView />
+          </>
+        )}
       </div>
     </BooksListContextProvider>
   );
