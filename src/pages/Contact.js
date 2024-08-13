@@ -43,7 +43,6 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    grantPermission();
     if (successMessage) {
       setTimeout(() => {
         setSuccessMessage("");

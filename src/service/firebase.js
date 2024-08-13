@@ -29,14 +29,6 @@ const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
 //get permisstion from firebase
-const grantPermission = () => {
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-    } else {
-      console.log("Unable to get permission to notify.");
-    }
-  });
-};
 
 const sendEmail = async ({ email, name, message }) => {
   try {
@@ -56,4 +48,4 @@ const sendEmail = async ({ email, name, message }) => {
   }
 };
 
-export { auth, analytics, sendEmail, grantPermission };
+export { auth, analytics, sendEmail };

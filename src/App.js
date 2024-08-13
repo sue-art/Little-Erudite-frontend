@@ -24,7 +24,6 @@ import Author from "./pages/Author";
 import SingIn from "./pages/Auth/SingIn";
 import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
-
 import Profile from "./pages/Profile";
 import Contact from "./pages/Contact";
 
