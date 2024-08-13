@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
-import { grantPermission } from "../service/firebase";
 import { sendMessage } from "../components/admin/users/UsersFetchAPI";
-import Loader from "../components/Loader";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
