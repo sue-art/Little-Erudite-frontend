@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useQuiz } from "./QuizContextProvider";
-
 import QuizItem from "./QuizItem";
 import Pagination from "../../layout/Pagination";
 import Loader from "../Loader";

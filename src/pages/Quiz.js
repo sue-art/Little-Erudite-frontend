@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
-import QuizCategory from "../components/quiz/QuizCategory";
-import QuizList from "../components/quiz/QuizList";
 import { QuizContextProvider } from "../components/quiz/QuizContextProvider";
+import QuizList from "../components/quiz/QuizList";
+import QuizCategory from "../components/quiz/QuizCategory";
 import QuizDetail from "../components/quiz/QuizDetail";
 import QuizSearch from "../components/quiz/QuizSearch";
 
