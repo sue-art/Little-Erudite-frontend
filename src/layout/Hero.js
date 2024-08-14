@@ -10,12 +10,13 @@ export default function Hero() {
         backgroundImage: `url(${bg_image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        minHeight: "400px",
       }}
       className="relative dairy-cream isolate px-6 pt-20 lg:px-8"
     >
-      <div className="mx-auto max-w-2xl pb:20 pt-15 sm:py-8 ">
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div className="relative dairy-cream rounded-full text-2xl px-3 ">
+      <div className="mx-auto max-w-2xl pb:20 sm:pt-10 mt-10 sm:mt-0 sm:py-20 ">
+        <div className="sm:mb-8 sm:flex sm:justify-center">
+          <div className="sm:mt-5 relative dairy-cream rounded-full text-2xl px-3 ">
             <a href="/books" className="font-semibold text-indigo-600">
               <img
                 width="660px"

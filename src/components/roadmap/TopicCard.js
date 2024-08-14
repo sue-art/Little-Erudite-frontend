@@ -67,7 +67,7 @@ const TopicCard = ({ topic, books, position }) => {
       )}`}
     >
       <div
-        className={`absolute top-9 ${getArrowPositionClass(
+        className={`arrow absolute top-9 ${getArrowPositionClass(
           position
         )} transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 ${getColorClass(
           color
@@ -76,21 +76,23 @@ const TopicCard = ({ topic, books, position }) => {
 
       <h2 class="my-4 text-2xl font-bold text-white">{topic} </h2>
       {books.slice(0, 5).map((book) => (
-        <Link reloadDocument to={`/books/${generateSlug(book.title)}`}>
-          <div class="flex items-center justify-between mt-2">
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-white">{book.title}</h3>
-              <p class="text-sm text-gray-700 dark:text-gray-400">
-                {book.author}
-              </p>
+        <div key={book.id}>
+          <Link reloadDocument to={`/books/${generateSlug(book.title)}`}>
+            <div class="flex items-center justify-between mt-2">
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold text-white">{book.title}</h3>
+                <p class="text-sm text-gray-700 dark:text-gray-400">
+                  {book.author}
+                </p>
+              </div>
+              <img
+                src={book.image}
+                alt={book.title}
+                class="w-12 h-12 object-cover rounded-lg"
+              />
             </div>
-            <img
-              src={book.image}
-              alt={book.title}
-              class="w-12 h-12 object-cover rounded-lg"
-            />
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );

@@ -40,7 +40,7 @@ const BookFlipItem = ({ book }) => {
 
   const bookStyle = {
     color: "white",
-    width: "150px", // Set a fixed width
+    width: "160px", // Set a fixed width
     height: "200px", // Set a fixed height
     alignItems: "center", // Center items horizontally
   };

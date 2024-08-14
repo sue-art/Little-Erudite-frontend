@@ -87,10 +87,13 @@ h1, h2, p{
 }
 
 
+
 .book-card{
-  width: 150px;
+  width: 160px;
   height: 200px;
 }
+
+
 
 /* In a global CSS file */
 .modal, [role="dialog"] {

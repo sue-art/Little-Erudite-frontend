@@ -67,11 +67,11 @@ const BookList = ({ parameter }) => {
     return (
       <Fragment>
         {parameter === "home" ? (
-          <div className="flex flex-wrap mt-5 mb-12">
+          <div className="grid mt-5 mb-12 grid-cols-3 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-8 xl:grid-cols-8">
             {books &&
               books.slice(0, 16).map((book) => (
-                <div key={book._id}>
-                  <BookFlipItem book={book}></BookFlipItem>
+                <div key={book._id} className="flex justify-center">
+                  <BookFlipItem book={book} />
                 </div>
               ))}
           </div>
