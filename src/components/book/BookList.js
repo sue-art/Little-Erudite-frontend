@@ -94,7 +94,7 @@ const BookList = ({ parameter }) => {
                 Books on {toTitleCase(topics)}
               </h2>
             )}
-            <div className="mt-6 grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-7 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-3 gap-x-2 gap-y-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-7 xl:gap-x-8">
               {currentBookList &&
                 currentBookList.map((book) => (
                   <BookItem book={book} key={book._id}></BookItem>
