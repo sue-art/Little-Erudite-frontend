@@ -5,7 +5,7 @@ import Avatar from "../avata/Avata";
 
 const initialRoadmap = [
   {
-    id: 2 - 223,
+    id: 2 - 22312,
     title: "The Little Bookworms Journey",
     slug: "the-little-bookworms-journey",
     avatarname: "Sam",
@@ -14,7 +14,7 @@ const initialRoadmap = [
       "It is designed to improve literacy in Year 1&2 children through enjoyable It is designed to enhance literacy in Year 1 and 2 children, promoting enjoyable reading and encouraging parents and carers to engage in effective conversations with them.",
   },
   {
-    id: 2 - 224,
+    id: 2 - 22412,
     title: "The Literary Adventurer's Journey",
     slug: "the-literary-adventurers-journey",
     avatarname: "Dave",
@@ -23,7 +23,7 @@ const initialRoadmap = [
       "It is designed to improve literacy in Year 3 and 4 children, helping them on their reading journey, discovering new books, and developing their literary skills.",
   },
   {
-    id: 3 - 225,
+    id: 3 - 22512,
     title: "The Chapter Chaser's Journey",
     slug: "the-chapter-chasers-journey",
     color: "yellow",

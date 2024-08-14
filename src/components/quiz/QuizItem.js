@@ -39,7 +39,7 @@ const QuizItem = ({ quiz, link, index }) => {
                   {quizTitle}
                   {title}
                 </h2>
-                <div class="flex items-center justify-center h-[280px]">
+                <div className="flex items-center justify-center h-[280px]">
                   <img
                     src={image}
                     alt={quizTitle}

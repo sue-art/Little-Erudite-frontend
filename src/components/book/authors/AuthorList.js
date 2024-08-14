@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllAuthors } from "../../admin/authors/AuthorFetchAPI";
+import Loader from "../../Loader";
 
 const convertToSlug = (title) => {
   if (!title) return "";
@@ -31,7 +32,7 @@ const AuthorList = () => {
   }, [loading]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   return (
     <Fragment>

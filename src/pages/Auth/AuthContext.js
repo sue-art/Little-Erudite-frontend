@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../../service/firebase"; // Adjust the import path as necessary
 
 import {
@@ -61,13 +65,17 @@ const authReducer = (state, action) => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const createAccount = async (email, password) => {
+  const createAccount = async (name, email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
-      );
+      ).then((userCredential) => {
+        updateProfile(userCredential.user, {
+          displayName: name,
+        });
+      });
       const user = userCredential.user;
       setLogin(user);
     } catch (error) {

@@ -11,18 +11,6 @@ const SeriesList = ({ carousel }) => {
   const { data, dispatch } = useContext(BookListContext);
   const { loading } = data;
 
-  const fetchAllSeries = async () => {
-    dispatch({ type: "loading", payload: true });
-    const seriesAll = await getAllSeries();
-    if (seriesAll.error) {
-      setError(seriesAll.error);
-    } else if (seriesAll) {
-      setSeries(seriesAll);
-    }
-
-    dispatch({ type: "loading", payload: false });
-  };
-
   const getColorClass = (index) => {
     switch (index) {
       case 0:
@@ -50,8 +38,20 @@ const SeriesList = ({ carousel }) => {
 
   useEffect(() => {
     // Fetch series data
+    const fetchAllSeries = async () => {
+      dispatch({ type: "loading", payload: true });
+      const seriesAll = await getAllSeries();
+      if (seriesAll.error) {
+        setError(seriesAll.error);
+      } else if (seriesAll) {
+        setSeries(seriesAll);
+      }
+
+      dispatch({ type: "loading", payload: false });
+    };
+
     fetchAllSeries();
-  }, []);
+  }, [dispatch]);
 
   // Handle error
   if (error) {
@@ -81,7 +81,7 @@ const SeriesList = ({ carousel }) => {
                   to={`/books/?series=${convertTitleToSlug(item.name)}`}
                   className=" item-center w-[300px] h-[200px]"
                 >
-                  <div class="flex items-center justify-center h-[200px]">
+                  <div className="flex items-center justify-center h-[200px]">
                     <img
                       src={item.image}
                       alt={item.name}

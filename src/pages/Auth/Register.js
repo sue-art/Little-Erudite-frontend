@@ -21,7 +21,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      createAccount(userEmail, userPassword);
+      createAccount(userName, userEmail, userPassword);
     } catch (err) {
       setError(err.message);
     }
