@@ -40,11 +40,59 @@ export const bookListReducer = (state, action) => {
         state.books && state.books.find((item) => item.slug === action.payload);
       return { ...state, book: fetchBook };
     case "searchFiltered":
-      return { ...state, filteredBooks: action.payload };
-    case "seriesFiltered":
-      return { ...state, filteredBooks: action.payload };
-    case "genresFiltered":
-      return { ...state, filteredBooks: action.payload };
+      const filteredBooks = state.books?.filter((item) => {
+        const searchTerm = action.payload.toUpperCase();
+        const regex = new RegExp(action.payload, "i"); // 'i' flag for case-insensitive
+
+        if (item.title) {
+          return item.title.toUpperCase().includes(searchTerm);
+        }
+
+        if (item.topics) {
+          return item.topics.some((topic) => regex.test(topic));
+        }
+
+        return false;
+      });
+
+      return {
+        ...state,
+        filteredBooks: filteredBooks, // Use a separate property for filtered books
+      };
+    case "seriesFilterd":
+      const seriesFilterdBooks =
+        state.books &&
+        state.books.filter((item) => {
+          if (
+            item.series &&
+            item.series.toUpperCase().includes(action.payload.toUpperCase())
+          ) {
+            return item;
+          }
+          return null; // This line can be omitted, as filter expects a boolean.
+        });
+
+      return {
+        ...state,
+        filteredBooks: seriesFilterdBooks, // Use a separate property for filtered books
+      };
+
+    case "genresFilterd":
+      const genresFilteredBooks =
+        state.books &&
+        state.books.filter((item) => {
+          if (item.topics) {
+            const regex = new RegExp(action.payload, "i"); // 'i' flag for case-insensitive
+            return item.topics.some((topic) => regex.test(topic));
+          }
+          return false;
+        });
+
+      return {
+        ...state,
+        filteredBooks: genresFilteredBooks, // Use a separate property for filtered books
+      };
+
     case "setMessage":
       return { ...state, message: action.payload };
     case "loading":
@@ -69,6 +117,7 @@ const BooksListContextProvider = ({ children }) => {
         slug: convertTitleToSlug(book.title),
       }));
       dispatch({ type: "setBooks", payload: updatedBookList });
+      dispatch({ type: "fetchBooksAndChangeState", payload: updatedBookList });
     } catch (error) {
       console.error("Error fetching books:", error);
       setMessage("Error fetching books. Please try again.");

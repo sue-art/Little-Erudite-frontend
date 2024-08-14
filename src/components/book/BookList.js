@@ -32,6 +32,13 @@ const BookList = ({ parameter }) => {
     indexOfLastQuiz
   );
 
+  const toTitleCase = (str) => {
+    return str.replace(
+      /\w\S*/g,
+      (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+  };
+
   const fetchSeachData = async (search) => {
     if (books.length === 0) {
       fetchData();
@@ -84,7 +91,7 @@ const BookList = ({ parameter }) => {
             )}
             {topics && (
               <h2 className="text-2xl mt-10 font-bold tracking-tight text-gray-900">
-                Books on {topics}
+                Books on {toTitleCase(topics)}
               </h2>
             )}
             <div className="mt-6 grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-7 xl:gap-x-8">
